@@ -1,7 +1,7 @@
 services:
   open-webui:
     image: ghcr.io/open-webui/open-webui
-    container_name: holly-open-webui
+    container_name: holly
     restart: unless-stopped
     networks:
       default:
@@ -14,8 +14,8 @@ services:
       traefik.http.routers.holly.rule: Host(`holly`)
       traefik.http.routers.holly.middlewares: trusted-ipallowlist
     volumes:
-      - /containers/holly-open-webui:/app/backend/data
-      - /var/cache/holly-open-webui:/app/backend/data/cache
+      - /containers/holly:/app/backend/data
+      - /var/cache/holly:/app/backend/data/cache
 
 networks:
   default:
