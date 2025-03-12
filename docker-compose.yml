@@ -1,28 +1,24 @@
 services:
   open-webui:
     image: ghcr.io/open-webui/open-webui
-    container_name: open-webui
+    container_name: holly-open-webui
     restart: unless-stopped
     networks:
       default:
       proxy:
     environment:
+      CORS_ALLOW_ORIGIN: https://holly
       OLLAMA_BASE_URL: http://ollama:11434
     labels:
       traefik.enable: true
-      traefik.http.routers.ollama.rule: Host(`ollama`)
-      traefik.http.routers.ollama.middlewares: trusted-ipallowlist
+      traefik.http.routers.holly.rule: Host(`holly`)
+      traefik.http.routers.holly.middlewares: trusted-ipallowlist
     volumes:
-      - /containers/ollama-open-webui:/app/backend/data
-      - /var/tmp/ollama-open-webui:/app/backend/data/cache
-
-  ollama:
-    image: ollama/ollama
-    container_name: ollama
-    restart: unless-stopped
-    volumes:
-      - /containers/ollama-ollama:/root/.ollama
+      - /containers/holly-open-webui:/app/backend/data
+      - /var/cache/holly-open-webui:/app/backend/data/cache
 
 networks:
+  default:
+    enable_ipv6: true
   proxy:
     external: true
