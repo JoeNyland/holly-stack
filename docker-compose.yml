@@ -32,6 +32,8 @@ services:
     restart: unless-stopped
     networks:
       default:
+    ports:
+      - 11434:11434
     volumes:
       - /containers/holly-ollama:/root/.ollama
 
