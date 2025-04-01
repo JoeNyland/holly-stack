@@ -23,7 +23,6 @@ services:
       traefik.http.routers.holly.middlewares: trusted-ipallowlist
     volumes:
       - /containers/holly-open-webui:/app/backend/data
-      - /var/cache/holly-open-webui:/app/backend/data/cache
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
 
   ollama:
