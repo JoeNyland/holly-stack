@@ -1,10 +1,11 @@
 services:
   open-webui:
     image: ghcr.io/open-webui/open-webui
-    container_name: holly-open-webui
+    container_name: holly
     restart: unless-stopped
     networks:
       default:
+      ollama:
       proxy:
     environment:
       CORS_ALLOW_ORIGIN: https://holly
@@ -25,17 +26,10 @@ services:
       - /containers/holly-open-webui:/app/backend/data
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
 
-  ollama:
-    image: ollama/ollama
-    container_name: holly-ollama
-    restart: unless-stopped
-    networks:
-      default:
-    volumes:
-      - /containers/holly-ollama:/root/.ollama
-
 networks:
   default:
     enable_ipv6: true
+  ollama:
+    external: true
   proxy:
     external: true
