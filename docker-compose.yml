@@ -4,8 +4,6 @@ services:
     container_name: holly
     restart: unless-stopped
     networks:
-      default:
-      ollama:
       proxy:
     environment:
       CORS_ALLOW_ORIGIN: https://holly
@@ -27,9 +25,5 @@ services:
       - /etc/ssl/certs/ca-certificates.crt:/etc/ssl/certs/ca-certificates.crt:ro
 
 networks:
-  default:
-    enable_ipv6: true
-  ollama:
-    external: true
   proxy:
     external: true
