@@ -7,7 +7,7 @@ services:
       proxy:
     environment:
       CORS_ALLOW_ORIGIN: https://holly
-      OLLAMA_BASE_URL: http://ollama:11434
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
       OAUTH_CLIENT_ID: ${OAUTH_CLIENT_ID:?OAUTH_CLIENT_ID is required}
       OAUTH_CLIENT_SECRET: ${OAUTH_CLIENT_SECRET:?OAUTH_CLIENT_SECRET is required}
       OPENID_PROVIDER_URL: https://auth.home.joe.nyland.io/application/o/holly/.well-known/openid-configuration
